@@ -17,12 +17,7 @@ public class DAO {
 	
 	public DAO() throws SQLException, ClassNotFoundException {
 		//TODO: get the values from property file.
-		//this.url = "jdbc:mysql://58f1b68865215.sh.cdb.myqcloud.com:7280/zhaofun";
-		this.url = "jdbc:mysql://10.66.100.28:3306/test";
-		//this.user = "cdb_outerroot";
-		this.user = "session_user";
-		//this.pwd = "Uc!513sql";
-		this.pwd = "Es5BJQX6g4";
+		
 		String driverClass = "com.mysql.jdbc.Driver";
 		try {
 			Class.forName(driverClass);
