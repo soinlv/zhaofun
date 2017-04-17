@@ -4,13 +4,13 @@ import java.sql.Date;
 
 public class UserObject {
 	
-	public int id;
+	public Integer id;
 	public String openId;
 	public Date createdDate;
 	
 	
 	
-	public UserObject(int id, String openId, Date createdDate) {
+	public UserObject(Integer id, String openId, Date createdDate) {
 		
 		this.id = id;
 		this.openId = openId;
