@@ -35,4 +35,17 @@ public class UserDAO extends DAO{
 		stmt.close();
 		conn.close();
 	}
+
+	public UserObject getUserByOpenId(String openId) throws SQLException {
+		UserObject userObj = new UserObject();
+		PreparedStatement stmt = conn.prepareStatement("select * from user where openId = ?");
+		stmt.setString(1, openId);
+		ResultSet result = stmt.executeQuery();
+	    if (!result.next()) return null;
+	    userObj.setOpenId(result.getString("openId"));
+	    userObj.setCreatedDate(result.getDate("createdDate"));
+	    stmt.close();
+	    conn.close();
+		return userObj;
+	}
 }
