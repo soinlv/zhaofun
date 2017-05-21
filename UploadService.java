@@ -42,8 +42,7 @@ public class UploadService {
 
 	public void handle(TunnelHandleOptions options) throws IOException {
 		UserInfo user = null;
-		LOGGER.log(Level.INFO, "handle method1" );
-		if (options != null && options.isCheckLogin()) {
+		/*if (options != null && options.isCheckLogin()) {
 			try {
 				LoginService loginService = new LoginService(request, response);
 				user = loginService.check();
@@ -52,13 +51,14 @@ public class UploadService {
 				return;
 			}
 		}
-		if (user == null) return;
-		LOGGER.log(Level.INFO, "handle method2" );
+		if (user == null) return;*/
 		if (request.getMethod().toUpperCase() == "GET") {
-			handleGet(user.getOpenId());
+			//handleGet(user.getOpenId());
+			handleGet("testOpenId");
 		}
 		else if (request.getMethod().toUpperCase() == "POST") {
-			handlePost(user.getOpenId());
+			//handlePost(user.getOpenId());
+			handlePost("testOpenId");
 		}
 		
 	}
@@ -96,15 +96,17 @@ public class UploadService {
 		                    }
 	                }  
 	                //获取路径名
-                    String value = item.getName() ;
+                    String value = item.getName();
                     //索引到最后一个反斜杠
                     int start = value.lastIndexOf("");
                     //截取 上传文件的 字符串名字，加1是 去掉反斜杠，
-                    String fileName = value.substring(start+1);
+                    //String fileName = value.substring(start+1);
+                    String fileName = "testfile.jpg";
                     InputStream input = file.getInputStream();
                     //本地用于存放文件的路径
                     String localPath = request.getSession().getServletContext().getRealPath("/")
-                    		 + "uploadFiles/" + fileName;
+                    		  + fileName;
+                    LOGGER.log(Level.INFO, "localPath: " + localPath);
                     FileOutputStream os = new FileOutputStream(localPath);
                     byte[] buffer = new byte[1024];
                     int n = 0;
